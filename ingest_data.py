@@ -1,6 +1,7 @@
 from tqdm.auto import tqdm
 import pandas as pd
 from sqlalchemy import create_engine
+import click
 
 dtype = {
     "VendorID": "Int64",
@@ -26,16 +27,17 @@ parse_dates = [
     "tpep_dropoff_datetime"
 ]
 
-def run(): 
-        pg_user='root'
-        pg_password='root'
-        pg_host='localhost'
-        pg_port=5432
-        pg_db='ny_taxi'
-        year=2021
-        month=1
-        chunksize=100000
-        target_table='yellow_taxi_data' 
+@click.command()
+@click.option('--pg_user', default='root', help='Postgres User')
+@click.option('--pg_password', default='root', help='Postgres Password')
+@click.option('--pg_host', default='localhost', help='Postgres Host')
+@click.option('--pg_port', default=5432, help='Postgres Port')
+@click.option('--pg_db', default='ny_taxi', help='Postgres Database')
+@click.option('--year', default=2021, help='Year of data')
+@click.option('--month', default=1, help='Month of data')
+@click.option('--chunksize', default=100000, help='Chunk size for processing')
+@click.option('--target_table', default='yellow_taxi_data', help='Target table name')
+def run(pg_user, pg_password, pg_host, pg_port, pg_db, year, month, chunksize, target_table): 
 
         
         prefix='https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow'
