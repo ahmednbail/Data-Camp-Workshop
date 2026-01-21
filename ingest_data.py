@@ -2,7 +2,7 @@ from tqdm.auto import tqdm
 import pandas as pd
 from sqlalchemy import create_engine
 import click
-
+            
 dtype = {
     "VendorID": "Int64",
     "passenger_count": "Int64",

@@ -10,9 +10,10 @@ dependencies = [
     "pyarrow>=22.0.0",
     "sqlalchemy>=2.0.45",
     "tqdm>=4.67.1",
+    "click>=4.1,<8.1.8",
 ]
 
-[dependency-groups]
+[dependency-groups] 
 dev = [
     "jupyter>=1.1.1",
     "pgcli>=4.4.0",
